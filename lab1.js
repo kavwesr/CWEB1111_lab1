@@ -352,16 +352,36 @@ var movies = [
 ]
 
 //Putting data into arrays
-var titles = []
-var budget = []
-var dom_gross = []
-var wrld_gross = []
+//Declarations
+  var titles = [];
+  var budget = [];
+  var dom_gross = [];
+  var wrld_gross = [];
+  var i;
+//var x = 0;
+// var flop = 0;
+  var sorted = [];
 for(var i in movies){
   titles[i] = movies[i].movie
   budget[i] = movies[i].budget
   dom_gross[i] = movies[i].domestic_gross
   wrld_gross[i] = movies[i].worldwide_gross
 }
+/*
+for(var x in movies){
+  if(movies.budget > movies.domestic_gross){
+    flop += 0;}
+    else{
+      x = 0;
+    }
+
+  
+}
+*/
+sorted = movies.sort(function(a, b){return a.budget - b.budget})
+
+
+
 
 //Creating chart
 var ctx = document.getElementById('myChart').getContext('2d'); 
@@ -373,21 +393,21 @@ type: 'bar',
 data: { 
     labels: titles, 
     datasets: [{ 
-        label: "Movie Budgets", 
+        label: "Movie Budgets in Millions", 
         lineTension: 0, 
         borderColor: 'rgb(255, 99, 132)', 
         backgroundColor:'rgb(255, 99, 132)', 
         data: budget 
         , 
     },{ 
-      label: "Domestic Gross", 
+      label: "Domestic Gross in Millions", 
       lineTension: 0, 
       borderColor: 'rgb(100, 99, 255)', 
       backgroundColor: 'rgb(100, 99, 255)', 
       data: dom_gross, 
     }, 
     { 
-      label: "WorldWide Gross", 
+      label: "WorldWide Gross in Millions", 
       lineTension: 0, 
       borderColor: 'rgb(1, 188, 21)', 
       backgroundColor: 'rgb(1, 188, 21)', 
@@ -412,3 +432,5 @@ console.log(titles)
 console.log(dom_gross) 
 console.log(wrld_gross) 
 console.log(budget)
+console.log(sorted)
+console.log(flop)
